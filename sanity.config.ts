@@ -5,13 +5,25 @@
  */
 
 import {visionTool} from '@sanity/vision'
-import {defineConfig} from 'sanity'
+import {defineConfig, InputProps} from 'sanity'
 import {structureTool} from 'sanity/structure'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import {apiVersion, dataset, projectId} from './sanity/env'
 import {schema} from './sanity/schemaTypes'
 import {structure} from './sanity/structure'
+
+interface Group {
+  disabled: boolean;
+  i18n?: any;
+  icon?: any;
+  name: string;
+  selected: boolean;
+  title: string;
+}
+type customInputProps = InputProps & {
+  groups?: Group[];
+};
 
 export default defineConfig({
   basePath: '/studio',
@@ -25,4 +37,18 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
   ],
+  form: {
+    components: {
+      input: (props: InputProps )  => {
+        const customProps = props as customInputProps;
+
+        if (Array.isArray(customProps.groups) && customProps.groups.length > 0) {
+          if (customProps.groups[0].name === 'all-fields') {
+            customProps.groups.shift()
+          }
+        }
+        return customProps.renderDefault(props)
+      },
+    },
+  },
 })
