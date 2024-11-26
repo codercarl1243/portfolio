@@ -1,6 +1,8 @@
 # Portfolio
 
-This is a repo for my portfolios, expect that this may be updated per year. 
+<image src="assets/coderCarl_main_transparent.png" width="300" height="300"/>
+
+This is a repo for my portfolios, expect that this may be updated per year. This is the base version.
 
 | Check the branches for older versions
 
