@@ -49,8 +49,7 @@ export const postType = defineType({
         }),
         defineField({
             name: 'details',
-            type: 'array',
-            of: [{ type: 'block' }],
+            type: 'richText',
             group: 'editorial',
         }),
     ],
