@@ -12,6 +12,6 @@ const POSTS_QUERY = defineQuery(`
     } | order(date desc)
     `)
 
-export function getAllPosts() {
+export function getAllPosts(): Promise<Post[]> {
     return client.fetch(POSTS_QUERY)
 }

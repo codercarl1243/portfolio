@@ -4,9 +4,7 @@ import Image from "next/image";
 import { sanityFetch } from "./studio/live";
 
 export default async function Home() {
-  const posts = await sanityFetch<Post_SanityDocument[]>({
-    query: POSTS_QUERY,
-  });
+  const posts = await getAllPosts();
   console.log("posts", posts)
   return (
     <div className=" bg-white grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
