@@ -8,6 +8,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily:{
+        main: ['var(--font-main)'],
+        accent: ['var(--font-accent)']
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
