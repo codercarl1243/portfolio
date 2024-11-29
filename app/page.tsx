@@ -12,7 +12,15 @@ export default function Home() {
           height={38}
           priority
         />
+       <h1 className="font-accent font-bold text-4xl">h1</h1>
+        <h2 className="font-accent font-bold text-3xl">h2</h2>
+        <h3 className="font-accent font-bold text-2xl">h3</h3>
+        <h4 className="font-accent font-bold text-xl">h4</h4>
 
+        <p className="font-main text-base">normal text</p>
+        <i className="font-main italic">italic text</i>
+        <p className="font-main font-bold">bold text</p>
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
 
       </main>
     </div>

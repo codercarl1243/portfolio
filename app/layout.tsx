@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./styling/style.css";
+import { Nunito_Sans, Libre_Baskerville} from 'next/font/google'
+import { SanityLive } from "./studio/live";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const sansSerifFont = Nunito_Sans({
+  subsets: ['latin'],
+  variable: "--font-main",
+  weight: ["400", "700"],
+  style: ["normal", "italic"]
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const serifFont = Libre_Baskerville({
+  subsets: ['latin'],
+  variable: "--font-accent",
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -27,9 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${sansSerifFont.variable} ${serifFont.variable} antialiased`}
       >
         {children}
+        
+        <SanityLive />
       </body>
     </html>
   );
