@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sanity:types": "npx sanity@latest schema extract --path ./sanity/types/schema.json && npx sanity@latest typegen generate"
   },
   "dependencies": {
     "@portabletext/react": "^3.1.0",
@@ -18,7 +19,7 @@
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "react-icons": "^5.3.0",
-    "sanity": "3",
+    "sanity": "^3.65.1",
     "styled-components": "6"
   },
   "devDependencies": {
