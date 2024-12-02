@@ -7,33 +7,35 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "sanity:types": "npx sanity@latest schema extract --path ./sanity/types/schema.json && npx sanity@latest typegen generate"
+    "typegen:filecreate": "node -e \"const fs = require('fs'); const path = './sanity/types/schema.json'; fs.mkdirSync('./sanity/types', { recursive: true }); if (!fs.existsSync(path)) fs.writeFileSync(path, '{}');\"",
+    "typegen:schema": "npx sanity@latest schema extract --path ./sanity/types/schema.json",
+    "typegen:types": "npx sanity@latest typegen generate",
+    "typegen": "npm run typegen:filecreate && npm run typegen:schema && npm run typegen:types"
   },
   "dependencies": {
-    "@portabletext/react": "^3.1.0",
-    "@sanity/image-url": "1",
-    "@sanity/ui": "^2.8.25",
-    "@sanity/vision": "3",
-    "next": "15.0.3",
-    "next-sanity": "9",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "@sanity/client": "^6.22.5",
+    "@sanity/image-url": "^1.1.0",
+    "@sanity/ui": "^2.9.0",
+    "@sanity/vision": "^3.65.1",
+    "next": "^15.0.3",
+    "next-sanity": "^9.8.19",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",
     "sanity": "^3.65.1",
-    "styled-components": "6"
+    "styled-components": "^6.1.13"
   },
   "devDependencies": {
-    "@portabletext/types": "^2.0.13",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/node": "^22.10.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "autoprefixer": "^10.4.20",
-    "eslint": "^8",
-    "eslint-config-next": "15.0.3",
+    "eslint": "^9.16.0",
+    "eslint-config-next": "^15.0.3",
     "postcss": "^8.4.49",
     "postcss-cli": "^11.0.0",
     "postcss-import": "^16.1.0",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.7.2"
   }
 }

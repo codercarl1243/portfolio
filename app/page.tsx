@@ -2,9 +2,14 @@ import { getAllPosts } from "@/sanity/lib/groq";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
 import { sanityFetch } from "./studio/live";
+import { client } from "@/sanity/lib/client";
+import { Post } from "@/sanity/types/sanity.types";
+import { POSTS_QUERY } from "@/sanity/lib/sanity.queries";
 
 export default async function Home() {
   const posts = await getAllPosts();
+  const posts2 = await client.fetch<Post[]>(POSTS_QUERY)
+  const posts3 = await client.fetch(POSTS_QUERY)
   console.log("posts", posts)
   return (
     <div className=" bg-white grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">

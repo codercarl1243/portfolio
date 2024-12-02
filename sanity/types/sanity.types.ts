@@ -96,7 +96,7 @@ export type Post = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote" | "small";
     listItem?: "number" | "bullet";
     markDefs?: Array<{
       href?: string;
@@ -133,7 +133,7 @@ export type RichText = Array<{
     _type: "span";
     _key: string;
   }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote" | "small";
   listItem?: "number" | "bullet";
   markDefs?: Array<{
     href?: string;
@@ -215,3 +215,20 @@ export type SanityImageMetadata = {
 
 export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Post | Slug | RichText | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
+// Source: ./sanity/lib/sanity.queries.ts
+// Variable: POSTS_QUERY
+// Query: *[_type == "post" && defined(slug.current)]{           _id,           name,           "slug": slug.current,           date       } | order(date desc)
+export type POSTS_QUERYResult = Array<{
+  _id: string;
+  name: null;
+  slug: string | null;
+  date: string | null;
+}>;
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    "\n    *[_type == \"post\" && defined(slug.current)]{\n           _id,\n           name,\n           \"slug\": slug.current,\n           date\n       } | order(date desc)\n       ": POSTS_QUERYResult;
+  }
+}

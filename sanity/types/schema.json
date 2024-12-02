@@ -536,6 +536,10 @@
                         {
                           "type": "string",
                           "value": "blockquote"
+                        },
+                        {
+                          "type": "string",
+                          "value": "small"
                         }
                       ]
                     },
@@ -814,6 +818,10 @@
                     {
                       "type": "string",
                       "value": "blockquote"
+                    },
+                    {
+                      "type": "string",
+                      "value": "small"
                     }
                   ]
                 },
