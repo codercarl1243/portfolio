@@ -1,15 +1,8 @@
 import { sanityFetch } from "@/app/studio/live";
-import { defineQuery } from "next-sanity";
+import { client } from './client';
+import type { Post } from '../types/sanity.types'
+import { POSTS_QUERY } from "./sanity.queries";
 
-const POSTS_QUERY = defineQuery(
-    `
- *[_type == "post" && defined(slug.current)]{
-        _id,
-        name,
-        "slug": slug.current,
-        date
-    } | order(date desc)
-    `
-)
-
-export const getAllPosts = () => sanityFetch({query: POSTS_QUERY})
+export function getAllPosts(){
+    return client.fetch(POSTS_QUERY)
+}

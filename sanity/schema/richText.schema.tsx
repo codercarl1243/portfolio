@@ -9,6 +9,8 @@ const textTypes: BlockStyleDefinition[] = [
     { title: 'H3', value: 'h3', component: ({ children }) => <h3 className="font-accent font-bold text-2xl">{children}</h3> },
     { title: 'H4', value: 'h4', component: ({ children }) => <h4 className="font-accent font-bold text-xl">{children}</h4> },
     { title: 'Quote', value: 'blockquote', component: ({ children }) => <blockquote>{children}</blockquote> },
+    { title: 'small', value: 'small', icon: GrItalic, component: ({ children }) => <small>{children}</small> },
+
 ]
 
 const textStyles: BlockStyleDefinition[] = [
