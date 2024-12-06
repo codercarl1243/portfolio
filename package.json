@@ -7,10 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typegen:filecreate": "node -e \"const fs = require('fs'); const path = './sanity/types/schema.json'; fs.mkdirSync('./sanity/types', { recursive: true }); if (!fs.existsSync(path)) fs.writeFileSync(path, '{}');\"",
-    "typegen:schema": "npx sanity@latest schema extract --path ./sanity/types/schema.json",
-    "typegen:types": "npx sanity@latest typegen generate",
-    "typegen": "npm run typegen:filecreate && npm run typegen:schema && npm run typegen:types"
+    "typegen": "./sanity-typegen.sh"
   },
   "dependencies": {
     "@sanity/client": "^6.22.5",
