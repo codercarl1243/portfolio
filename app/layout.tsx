@@ -18,8 +18,7 @@ const serifFont = Libre_Baskerville({
 
 export const metadata: Metadata = {
   title: "Coder Carl's website",
-  description: "Projects and stuff by Coder Carl",
-  icons: []
+  description: "Projects and stuff by Coder Carl",  
 };
 
 export default function RootLayout({
