@@ -4,8 +4,14 @@ import { defineQuery } from "next-sanity";
 export const POSTS_QUERY = defineQuery(`
     *[_type == "post" && defined(slug.current)]{
            _id,
-           name,
+           heading,
+           subheading,
            "slug": slug.current,
-           date
+           "blockContent": details,
+           date,
+           "image": {
+            "sanity-asset": image.asset-> ,
+            "alt": coalesce(image.asset->altText, "")
+            }
        } | order(date desc)
        `)

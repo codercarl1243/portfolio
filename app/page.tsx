@@ -5,6 +5,7 @@ import { sanityFetch } from "./studio/live";
 import { client } from "@/sanity/lib/client";
 import { Post } from "@/sanity/types/sanity.types";
 import { POSTS_QUERY } from "@/sanity/lib/sanity.queries";
+import PostCard from "./components/post/post.card";
 
 export default async function Home() {
   const posts = await getAllPosts();
@@ -21,6 +22,8 @@ export default async function Home() {
           height={38}
           priority
         />
+
+        {posts?.map(post => <PostCard post={post}/>)}
        <h1 className="font-accent font-bold text-4xl">h1</h1>
         <h2 className="font-accent font-bold text-3xl">h2</h2>
         <h3 className="font-accent font-bold text-2xl">h3</h3>

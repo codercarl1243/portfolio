@@ -3,7 +3,7 @@ import { type SchemaTypeDefinition } from 'sanity'
 import { enhancedGroupsDefinition } from './functions/grouping';
 import { postType } from './post.schema';
 import { richText } from './richText.schema';
-
+import {CustomImage} from './Image.schema';
 
 const enhancedSchemas = enhancedGroupsDefinition([
     postType
@@ -11,6 +11,7 @@ const enhancedSchemas = enhancedGroupsDefinition([
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    CustomImage,
     richText,
     ...enhancedSchemas],
 }

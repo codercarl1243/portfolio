@@ -1,8 +1,15 @@
-import { sanityFetch } from "@/app/studio/live";
 import { client } from './client';
-import type { Post } from '../types/sanity.types'
 import { POSTS_QUERY } from "./sanity.queries";
 
-export function getAllPosts(){
-    return client.fetch(POSTS_QUERY)
+export async function getAllPosts(){
+
+    try {
+        const result = await client.fetch(POSTS_QUERY);
+        if (!result) return [];
+    
+        return result;
+
+    } catch (err) {
+        console.log("error occured in fetching Posts \n", err)
+    }
 }
