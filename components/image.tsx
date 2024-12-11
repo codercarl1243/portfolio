@@ -1,3 +1,4 @@
+'use server';
 import { urlFor } from '@/sanity/lib/image';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import Image from 'next/image';
@@ -9,19 +10,21 @@ type TProps = {
     imageAsset: SanityImageSource;
 }
 
-export default function Main({
-    width = 800,  height = 300, alt = "", imageAsset
+export default async function Main({
+    width = 800, height = 300, alt = "", imageAsset
 }: TProps
-){
-
+) {
+    if (!imageAsset) {
+        return;
+    }
 
     return (
-        <Image 
+        <Image
             src={urlFor(imageAsset)
                 .width(width)
                 .height(height)
-                .url()} 
-            alt={alt} 
+                .url()}
+            alt={alt}
             width={width}
             height={height}
             className='image'

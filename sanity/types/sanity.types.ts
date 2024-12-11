@@ -231,7 +231,7 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/sanity.queries.ts
 // Variable: POSTS_QUERY
-// Query: *[_type == "post" && defined(slug.current)]{           _id,           heading,           subheading,           "slug": slug.current,           "blockContent": details,           date,           "image": {            "sanity-asset": image.asset-> ,            "alt": coalesce(image.asset->altText, "")            }       } | order(date desc)
+// Query: *[_type == "post" && defined(slug.current)]{           _id,           heading,           subheading,           "slug": slug.current,           "blockContent": details,           date,           "image": {            "sanityAsset": image { ..., asset->},            "alt": coalesce(image.asset->altText, "")            }       } | order(date desc)
 export type POSTS_QUERYResult = Array<{
   _id: string;
   heading: string | null;
@@ -269,35 +269,111 @@ export type POSTS_QUERYResult = Array<{
   date: string | null;
   image: {
     sanityAsset: {
-      _id: string;
-      _type: "sanity.imageAsset";
-      _createdAt: string;
-      _updatedAt: string;
-      _rev: string;
-      originalFilename?: string;
-      label?: string;
-      title?: string;
-      description?: string;
-      altText?: string;
-      sha1hash?: string;
-      extension?: string;
-      mimeType?: string;
-      size?: number;
-      assetId?: string;
-      uploadId?: string;
-      path?: string;
-      url?: string;
-      metadata?: SanityImageMetadata;
-      source?: SanityAssetSourceData;
+      asset: {
+        _id: string;
+        _type: "sanity.imageAsset";
+        _createdAt: string;
+        _updatedAt: string;
+        _rev: string;
+        originalFilename?: string;
+        label?: string;
+        title?: string;
+        description?: string;
+        altText?: string;
+        sha1hash?: string;
+        extension?: string;
+        mimeType?: string;
+        size?: number;
+        assetId?: string;
+        uploadId?: string;
+        path?: string;
+        url?: string;
+        metadata?: SanityImageMetadata;
+        source?: SanityAssetSourceData;
+      } | null;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "CustomImage";
     } | null;
     alt: string | "";
   };
 }>;
+// Variable: POST_QUERY
+// Query: *[_type == "post" && slug.current == $slug][0]{           _id,           heading,           subheading,           "slug": slug.current,           "blockContent": details,           date,           "image": {            "sanityAsset": image { ..., asset->},            "alt": coalesce(image.asset->altText, "")            }       }
+export type POST_QUERYResult = {
+  _id: string;
+  heading: string | null;
+  subheading: string | null;
+  slug: string | null;
+  blockContent: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal" | "small";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }> | null;
+  date: string | null;
+  image: {
+    sanityAsset: {
+      asset: {
+        _id: string;
+        _type: "sanity.imageAsset";
+        _createdAt: string;
+        _updatedAt: string;
+        _rev: string;
+        originalFilename?: string;
+        label?: string;
+        title?: string;
+        description?: string;
+        altText?: string;
+        sha1hash?: string;
+        extension?: string;
+        mimeType?: string;
+        size?: number;
+        assetId?: string;
+        uploadId?: string;
+        path?: string;
+        url?: string;
+        metadata?: SanityImageMetadata;
+        source?: SanityAssetSourceData;
+      } | null;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "CustomImage";
+    } | null;
+    alt: string | "";
+  };
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n    *[_type == \"post\" && defined(slug.current)]{\n           _id,\n           heading,\n           subheading,\n           \"slug\": slug.current,\n           \"blockContent\": details,\n           date,\n           \"image\": {\n            \"sanity-asset\": image.asset-> ,\n            \"alt\": coalesce(image.asset->altText, \"\")\n            }\n       } | order(date desc)\n       ": POSTS_QUERYResult;
+    "\n    *[_type == \"post\" && defined(slug.current)]{\n           _id,\n           heading,\n           subheading,\n           \"slug\": slug.current,\n           \"blockContent\": details,\n           date,\n           \"image\": {\n            \"sanityAsset\": image { ..., asset->},\n            \"alt\": coalesce(image.asset->altText, \"\")\n            }\n       } | order(date desc)\n       ": POSTS_QUERYResult;
+    "\n    *[_type == \"post\" && slug.current == $slug][0]{\n           _id,\n           heading,\n           subheading,\n           \"slug\": slug.current,\n           \"blockContent\": details,\n           date,\n           \"image\": {\n            \"sanityAsset\": image { ..., asset->},\n            \"alt\": coalesce(image.asset->altText, \"\")\n            }\n       }\n       ": POST_QUERYResult;
   }
 }

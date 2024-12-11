@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./styling/style.css";
 import { Nunito_Sans, Libre_Baskerville} from 'next/font/google'
 import { SanityLive } from "./studio/live";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
 
 const sansSerifFont = Nunito_Sans({
   subsets: ['latin'],
@@ -29,9 +31,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${sansSerifFont.variable} ${serifFont.variable} antialiased`}
+        className={`${sansSerifFont.variable} ${serifFont.variable} antialiased  bg-white grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
       >
+        <Header />
         {children}
+        <Footer />
         
         <SanityLive />
       </body>
