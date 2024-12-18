@@ -12,6 +12,7 @@ import {structureTool} from 'sanity/structure'
 import {apiVersion, dataset, projectId} from './sanity/env'
 import {schema} from './sanity/schema'
 import {structure} from './sanity/structure'
+import {codeInput} from '@sanity/code-input'
 
 interface Group {
   disabled: boolean;
@@ -36,6 +37,7 @@ export default defineConfig({
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
+    codeInput()
   ],
   form: {
     components: {
