@@ -1,11 +1,15 @@
-@import "tailwindcss/base";
-@import "./base/_index.css";
-
-@import "./layout/_index.css";
-@import "./pages/_index.css";
-
-@import "tailwindcss/components";
-@import "./components/_index.css";
-
+/* utilities */
 @import "tailwindcss/utilities";
-@import "./utilities/_index.css";
+@import "./utilities/index.css";
+
+/* Base */
+@import "tailwindcss/base";
+@import "./base/index.css";
+
+/* Layout */
+@import "./layout/index.css";
+@import "./pages/index.css";
+
+/* Components */
+@import "tailwindcss/components";
+@import "./components/card.css";

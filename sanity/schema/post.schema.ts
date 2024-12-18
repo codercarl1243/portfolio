@@ -28,7 +28,7 @@ export const postType = defineType({
         }),
         defineField({
             name: 'image',
-            type: 'image',
+            type: 'CustomImage',
             group: 'details',
         }),
         defineField({
