@@ -1,6 +1,9 @@
 import Image from '@/components/image';
 import type { TImageProps } from '@/components/image/image.dts';
+
 import CustomLink from '@/components/link';
+import type { TLinkProps } from '@/components/link';
+
 import CodeBlock from '@/components/code';
 import type { TCodeProps } from '@/components/code';
 
@@ -34,4 +37,4 @@ export const NumberedList = ({ children }: { children: React.ReactNode }) => (
   <ol className="list-decimal pl-5">{children}</ol>
 );
 
-export const Link = ({ children, href }: { children: React.ReactNode; href: string }) => <CustomLink href={href}>{children}</CustomLink>;
+export const Link = ({ children, href }: TLinkProps) => <CustomLink href={href}>{children}</CustomLink>;

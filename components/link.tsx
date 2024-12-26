@@ -4,8 +4,13 @@ import classNames from 'classnames';
 import Link from 'next/link';
 import {ComponentProps, useState}  from 'react';
 
+export type TLinkProps =  ComponentProps<typeof Link>;
 
-export default function CustomLink(props: ComponentProps<typeof Link>){
+export default function CustomLink({
+    href,
+    className,
+    children
+}: TLinkProps){
     const [isPressed, setIsPressed] = useState(false);
 	const [isHovered, setIsHovered] = useState(false);
 
@@ -15,19 +20,19 @@ export default function CustomLink(props: ComponentProps<typeof Link>){
         'link-pressed': isPressed,
         'link-hover': !isPressed && isHovered,
         },
-        props.className
+        className
     )
 
     return (
         <Link 
             className={linkClasses}
-            href={props.href}
+            href={href}
             onMouseDown={() => setIsPressed(true)}
 			onMouseUp={() => setIsPressed(false)}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
         >
-            {props.children}
+            {children}
         </Link>
     )
 }
