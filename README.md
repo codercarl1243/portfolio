@@ -1,6 +1,6 @@
 # Portfolio
 
-<image src="assets/coderCarl_main_transparent.png" width="300" height="300"/>
+<image src="public/coderCarl_main_transparent.png" width="300" height="300"/>
 
 This is the 2024 portfolio.
 
