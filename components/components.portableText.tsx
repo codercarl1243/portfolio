@@ -1,13 +1,14 @@
 import { PortableText, PortableTextBlock, PortableTextBlockComponent, PortableTextComponent, PortableTextComponentProps, PortableTextMarkComponentProps, PortableTextProps } from "next-sanity";
 import { Blockquote, Bold, BulletList, Code, Heading1, Heading2, Heading3, ImageComponent, Italic, Link, NormalText, NumberedList, Underline } from "./components.common";
 import { CodeInputValue } from "@sanity/code-input";
+import type { TSanityImageProps } from "@/components/image/image.dts";
 
 
 
 const portableTextComponents = {
     types: {
-      image: ({value}: PortableTextComponentProps<typeof ImageComponent>) => value ? <ImageComponent value={value} /> : null,
-      // code:  ({children, value: { code, language}}: PortableTextComponentProps<CodeInputValue>) => Code as PortableTextComponent<CodeInputValue>,
+      // image: ({value}: PortableTextComponentProps<typeof ImageComponent>) => value ? <ImageComponent sanityImageAsset={value.sanityImage} alt={value.alt}/> : null,
+      image: ({value}: TSanityImageProps) => <ImageComponent value={value} />,
       code: ({value}: PortableTextComponentProps<CodeInputValue>) => <Code code={value.code} language={value.language} />,
     },
     block: {
@@ -35,7 +36,7 @@ const portableTextComponents = {
 
   // FunctionComponent<PortableTextMarkComponentProps<any>>
 export default function Main({value}: {value: any}){
-  console.log("value", value)
+  // console.log("value", value)
     return (
       <div className="prose py-4">
         

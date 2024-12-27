@@ -1,7 +1,11 @@
-import Image from './image';
+import Image from '@/components/image';
+import type { TImageProps } from '@/components/image/image.dts';
+
 import CustomLink from '@/components/link';
+import type { TLinkProps } from '@/components/link';
+
 import CodeBlock from '@/components/code';
-import { CodeInputValue } from '@sanity/code-input';
+import type { TCodeProps } from '@/components/code';
 
 export const Heading1 = ({ children }: { children: React.ReactNode }) => <h1 className="font-accent font-bold text-4xl">{children}</h1>;
 
@@ -21,9 +25,9 @@ export const Italic = ({ children }: { children: React.ReactNode }) => <i>{child
 
 export const Underline = ({ children }: { children: React.ReactNode }) => <span className="underline">{children}</span>;
 
-export const Code = ({ language, code }: CodeInputValue) => <CodeBlock language={language} code={code} />
+export const Code = ({ language, code }: TCodeProps) => <CodeBlock language={language} code={code} />
 
-export const ImageComponent = ({ value }: { value: any }) => <Image sanityImage={value.asset.url} alt={value.alt ?? ''} />
+export const ImageComponent = (props: TImageProps) => <Image {...props}/>
 
 export const BulletList = ({ children }: { children: React.ReactNode }) => (
   <ul className="list-disc pl-5">{children}</ul>
@@ -33,4 +37,4 @@ export const NumberedList = ({ children }: { children: React.ReactNode }) => (
   <ol className="list-decimal pl-5">{children}</ol>
 );
 
-export const Link = ({ children, href }: { children: React.ReactNode; href: string }) => <CustomLink href={href}>{children}</CustomLink>;
+export const Link = ({ children, href }: TLinkProps) => <CustomLink href={href}>{children}</CustomLink>;
