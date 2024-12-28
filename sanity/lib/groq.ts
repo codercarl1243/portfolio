@@ -2,7 +2,7 @@ import { POST_QUERYResult, POSTS_QUERYResult } from "../types/sanity.types";
 import { POST_QUERY, POSTS_QUERY } from "./sanity.queries";
 import { sanityFetch } from "@/app/studio/live";
 
-export const getAllPosts = async () => await _SanityFetch<POSTS_QUERYResult[]>(POSTS_QUERY);
+export const getAllPosts = async () => await _SanityFetch<POSTS_QUERYResult>(POSTS_QUERY);
 
 export const getPost = async (slug: string) => await _SanityFetch<POST_QUERYResult>(POST_QUERY, { slug })
 
