@@ -8,7 +8,7 @@ export default async function Page({
     params: Promise<{ slug: string }>;
   }){
     const {slug} = await params;
-console.log("slug", slug)
+    
     if (!slug) {
       redirect("/");
     }
@@ -19,10 +19,6 @@ console.log("slug", slug)
         notFound()
       }
 
-    return (
-        <main>
-            <Post post={post}/>
-        </main>
-    )
+    return <Post post={post}/>
 }
 
