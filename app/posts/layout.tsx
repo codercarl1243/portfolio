@@ -3,10 +3,12 @@ import Header from "@/components/layout/Header";
 
 export default function PostsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="wrapper">
+    <>
       <Header />
-      <section>{children}</section>
+      <main>
+        {children}
+      </main>
       <Footer />
-    </ div>
+    </>
   );
 }

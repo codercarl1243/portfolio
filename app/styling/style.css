@@ -13,3 +13,4 @@
 /* Components */
 @import "tailwindcss/components";
 @import "./components/card.css";
+@import "./components/link.css";

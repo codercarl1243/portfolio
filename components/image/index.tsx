@@ -8,7 +8,6 @@ import { CiImageOff } from "react-icons/ci";
 
 
 export default function Main(props: TImageProps) {
-
     return (
         <ErrorBoundary
             fallback={<FallbackImage width={props.width ?? 800} height={props.height ?? 300} />}

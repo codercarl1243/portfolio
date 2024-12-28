@@ -1,21 +1,23 @@
+'use client';
 import Image from '@/components/image';
 import type { TImageProps } from '@/components/image/image.dts';
 
 import CustomLink from '@/components/link';
-import type { TLinkProps } from '@/components/link';
+import type { TLinkProps } from '@/components/link/link.dts';
 
 import CodeBlock from '@/components/code';
 import type { TCodeProps } from '@/components/code';
+import { Heading, Text } from '@sanity/ui';
 
-export const Heading1 = ({ children }: { children: React.ReactNode }) => <h1 className="font-accent font-bold text-4xl">{children}</h1>;
+export const Heading1 = ({ children }: { children: React.ReactNode }) => <Heading as="h1" size={[3,3,4,5]} className="font-accent font-bold carl">{children}</Heading>;
 
-export const Heading2 = ({ children }: { children: React.ReactNode }) => <h2 className="font-accent font-bold text-3xl">{children}</h2>;
+export const Heading2 = ({ children }: { children: React.ReactNode }) => <Heading as="h2" size={[2,2,3,4]} className="font-accent font-bold">{children}</Heading>;
 
-export const Heading3 = ({ children }: { children: React.ReactNode }) => <h3 className="font-accent font-bold text-2xl">{children}</h3>;
+export const Heading3 = ({ children }: { children: React.ReactNode }) => <Heading as="h3" size={[2,2,2,3]} className="font-accent font-bold">{children}</Heading>;
 
-export const Heading4 = ({ children }: { children: React.ReactNode }) => <h3 className="font-accent font-bold text-xl">{children}</h3>;
+export const Heading4 = ({ children }: { children: React.ReactNode }) => <Heading as="h4" size={[1,2,2,2]} className="font-accent font-bold">{children}</Heading>;
 
-export const NormalText = ({ children }: { children: React.ReactNode }) => <p className="font-main text-base">{children}</p>;
+export const NormalText = ({ children }: { children: React.ReactNode }) => <Text className="font-main text-base">{children}</Text>;
 
 export const Blockquote = ({ children }: { children: React.ReactNode }) => <blockquote className="border-l-4 pl-4 font-main italic">{children}</blockquote>;
 
@@ -37,4 +39,5 @@ export const NumberedList = ({ children }: { children: React.ReactNode }) => (
   <ol className="list-decimal pl-5">{children}</ol>
 );
 
-export const Link = ({ children, href }: TLinkProps) => <CustomLink href={href}>{children}</CustomLink>;
+export const Link = ({ children, value }: TLinkProps) => <CustomLink value={value}>{children}</CustomLink>;
+// export const Link = (props) => <CustomLink props={props}>{props.children}</CustomLink>;
