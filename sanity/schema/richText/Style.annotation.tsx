@@ -38,14 +38,18 @@ export const annotationStyles = [
                 name: 'href',
                 type: 'url',
                 title: 'External URL',
-                hidden: ({ parent }) => parent?.linkType !== 'external',
+                hidden: ({ parent }: { parent: { linkType?: string } }) => parent?.linkType !== 'external',
                 validation: (Rule) =>
-                    Rule.uri({
-                        allowRelative: false,
-                        scheme: ['http', 'https', 'mailto', 'tel'],
-                    })
-                        .required()
-                        .error('A valid external URL is required for external links.'),
+                    Rule.custom((value: string, context) => {
+                        const parent = context.parent as { linkType?: string };
+
+                        if (parent?.linkType === 'external') {
+                            return /^https?:\/\/|^mailto:|^tel:|^www/.test(value)
+                                    ? true
+                                    : 'A valid external URL is required for external links.'
+                        }
+                        return true; // Skip validation for internal links
+                    }),
             },
             {
                 name: 'reference',
