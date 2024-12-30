@@ -3,7 +3,9 @@
     /* Layout */
     grid gap-4 grid-rows-[100px_1fr_20px] items-center justify-items-center
     /* width, height, padding, margin */
-    min-h-screen p-8 pb-20 sm:px-20
+    min-h-screen p-8 pb-20 sm:px-20 mx-auto
     /* general */
     bg-white font-[family-name:var(--font-main)];
+
+    width: min(calc(100% - 2rem), 80rem);
 }
