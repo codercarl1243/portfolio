@@ -23,7 +23,18 @@ export const POST_QUERY = defineQuery(`
            heading,
            subheading,
            "slug": slug.current,
-           "blockContent": details,
+           "blockContent": details[]{
+            ...,
+            markDefs[]{
+                ...,
+                _type == "link" => {
+                    "href": select(
+                        linkType == "internal" =>  reference->_type + 's/' + reference->slug.current,
+                        linkType == "external" => href
+                    )
+                }
+            }
+         },
            date,
            "image": {
             "sanityAsset": image { ..., asset->},
