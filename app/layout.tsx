@@ -32,7 +32,7 @@ export default function RootLayout({
     <SanityThemeProvider>
       <html lang="en">
         <body
-          className={`${sansSerifFont.variable} ${serifFont.variable} antialiased wrapper`}
+          className={`${sansSerifFont.variable} ${serifFont.variable} antialiased`}
         >
           {children}
           <SanityLive />
