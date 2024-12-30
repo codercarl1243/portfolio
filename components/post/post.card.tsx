@@ -1,3 +1,4 @@
+'use client';
 import type { POSTS_QUERYResult } from '@sanity/types/sanity.types';
 import {ImageComponent, Link} from '@/components';
 import { Card, Text } from '@sanity/ui';

@@ -1,4 +1,5 @@
-import type { POST_QUERYResult, POSTS_QUERYResult } from '@sanity/types/sanity.types';
+'use client';
+import type { POST_QUERYResult } from '@sanity/types/sanity.types';
 import {ImageComponent} from '@/components';
 import PortableText from '@/components/components.portableText'
 import { Stack } from '@sanity/ui';
