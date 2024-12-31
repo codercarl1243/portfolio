@@ -21,7 +21,7 @@ export default function Main(props: TImageProps) {
 
 
 
-function FallbackImage({ width, height }: React.DetailedHTMLProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>) {
+function FallbackImage({ width, height }: React.ImgHTMLAttributes<HTMLImageElement>) {
     return (
         <div style={{ width, height }} className="fallback-image">
             <CiImageOff />
