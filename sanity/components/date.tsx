@@ -1,5 +1,4 @@
 import { DateTimeInputProps, useFormValue, set } from 'sanity'
-import { Stack, Text } from '@sanity/ui'
 import { useEffect } from 'react';
 
 export function DateInput(props: DateTimeInputProps) {
@@ -28,9 +27,8 @@ export function DateInput(props: DateTimeInputProps) {
     // }
     console.log(":props", props)
     return (
-        <Stack space={3}>
+        <div>
             {props.renderDefault(props)}
-
-        </Stack>
+        </div>
     )
 }

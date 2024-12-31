@@ -1,7 +1,7 @@
 'use client';
 import type { POSTS_QUERYResult } from '@sanity/types/sanity.types';
 import {ImageComponent, Link} from '@/components';
-import { Card, Text } from '@sanity/ui';
+import {Text} from '@/components';
 
 type TProps = {
     post: POSTS_QUERYResult[number];
@@ -12,7 +12,7 @@ export default function PostCard({ post }: TProps) {
     const { image: {sanityAsset}, heading, subheading, slug } = post
 
     return (
-        <Card className="card">
+        <div className="div">
             <Text className='card__text'>
                 <h3>
                     <Link href={`posts/${slug}`}>{heading}</Link>
@@ -23,6 +23,6 @@ export default function PostCard({ post }: TProps) {
                 {sanityAsset && sanityAsset  && <ImageComponent value={sanityAsset} alt={sanityAsset.alt}/>}
             </div>
 
-        </Card>
+        </div>
     )
 }

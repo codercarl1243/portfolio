@@ -1,30 +1,33 @@
 'use client'
-import { Box, Text, Tooltip } from "@sanity/ui"
+import Link from 'next/link';
+import type { NextLinkProps, TLinkProps } from './link.dts';
+import { Text } from "..";
+import { isPortableTextLink } from "./guards";
+import classNames from 'classnames';
 
-//  <Tooltip
-//     content={
-//         <Box padding={3}>
-//             <Text align="center" size={1}>
-//             This is a link
-//                 {/* {`${value?.href}` || 'No url found'} */}
-//             </Text>
-//         </Box>
-//     }
-//     placement="bottom"
-//     fallbackPlacements={['right', 'left']}
-//     portal
-// >
-export default function CustomLink(props) {
-    console.log(props)
-    return (
-        <>
+export default function Main(props: TLinkProps) {
 
-      <Box padding={3}>
-        
-            {props.children}
-      </Box>
-        </>
-    )
+
+  if (isPortableTextLink(props)) {
+    return <CustomLink {...props} href={props.value.href} />
+  }
+
+  return <CustomLink {...props} />
+}
+
+
+function CustomLink({ href = "", children }: NextLinkProps) {
+
+  if (!href || !String(href).length) {
+    return <Text >{children}</Text>
+  }
+
+  return (
+  <Link href={href}>
+    {children}
+  </Link>
+  )
+
 }
 // </Tooltip>
 
@@ -32,10 +35,7 @@ export default function CustomLink(props) {
 // 'use client';
 
 // import classNames from 'classnames';
-// import Link from 'next/link';
-// import { Box, Text, Tooltip } from '@sanity/ui'
 // import { useState } from 'react';
-// import type { TLinkProps } from './link.dts';
 
 
 

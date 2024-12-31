@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import "./styling/style.css";
 import { Nunito_Sans, Libre_Baskerville } from 'next/font/google'
 import { SanityLive } from "./studio/live";
-import SanityThemeProvider from './provider';
-
-
 
 const sansSerifFont = Nunito_Sans({
   subsets: ['latin'],
@@ -29,15 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SanityThemeProvider>
-      <html lang="en">
-        <body
-          className={`${sansSerifFont.variable} ${serifFont.variable} antialiased`}
-        >
-          {children}
-          <SanityLive />
-        </body>
-      </html>
-    </SanityThemeProvider>
+    <html lang="en">
+      <body
+        className={`${sansSerifFont.variable} ${serifFont.variable} antialiased`}
+      >
+        {children}
+        <SanityLive />
+      </body>
+    </html>
   );
 }

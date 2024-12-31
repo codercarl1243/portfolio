@@ -1,13 +1,13 @@
 
 import { getAllPosts } from "@/sanity/lib/groq";
 import PostCard from "@/components/post/post.card";
-import { Stack, Text } from "@sanity/ui";
+import {Text} from '@/components';
 
 export default async function Page() {
   const posts = await getAllPosts();
   console.log("getAllPosts posts", posts)
   return (
-    <Stack>
+    <div>
       <h1>Welcome to the Posts Page</h1>
       <Text>Select a post to read.</Text>
       <ul>
@@ -15,7 +15,7 @@ export default async function Page() {
           <li key={post._id}><PostCard post={post} /></li>
         ))}
       </ul>
-    </Stack>
+    </div>
   )
 }
 
