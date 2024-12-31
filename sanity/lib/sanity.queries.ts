@@ -29,7 +29,7 @@ export const POST_QUERY = defineQuery(`
                 ...,
                 _type == "link" => {
                     "href": select(
-                        linkType == "internal" =>  reference->_type + 's/' + reference->slug.current,
+                        linkType == "internal" =>  reference->slug.current,
                         linkType == "external" => href
                     )
                 }
