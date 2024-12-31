@@ -1,6 +1,6 @@
 'use client';
 import type { POST_QUERYResult } from '@sanity/types/sanity.types';
-import { ImageComponent } from '@/components';
+import { H1, ImageComponent, P } from '@/components';
 import PortableText from '@/components/components.portableText'
 
 
@@ -23,8 +23,8 @@ export default function Post({ post }: TProps) {
 
             <div className='post__text'>
                 <div className='post__text--heading'>
-                    {heading && <h1 className='font-serif font-bold text-5xl my-2'>{heading}</h1>}
-                    {subheading && <p className='font-light text-2xl my-1'>{subheading}</p>}
+                    {heading && <H1>{heading}</H1>}
+                    {subheading && <P>{subheading}</P>}
                 </div>
                 <div className='post__text--content'>
                     {post?.blockContent && <PortableText value={post?.blockContent} />}

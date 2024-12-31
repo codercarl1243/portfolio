@@ -1,6 +1,6 @@
 'use client'
 import { PortableText, PortableTextBlock, PortableTextBlockComponent, PortableTextComponent, PortableTextComponentProps, PortableTextMarkComponent, PortableTextMarkComponentProps, PortableTextProps } from "next-sanity";
-import { Blockquote, Bold, BulletList, Code, Heading1, Heading2, Heading3, ImageComponent, Italic, Link, Text, NumberedList, Underline } from "@/components";
+import { Blockquote, Bold, BulletList, Code, H1, H2, H3, ImageComponent, Italic, Link, P, NumberedList, Underline } from "@/components";
 import { CodeInputValue } from "@sanity/code-input";
 import { TSanityImageProps } from "./image/image.dts";
 
@@ -15,10 +15,10 @@ const portableTextComponents = {
     code: ({ value }: PortableTextComponentProps<CodeInputValue>) => <Code code={value.code} language={value.language} />,
   },
   block: {
-    h1: Heading1,
-    h2: Heading2,
-    h3: Heading3,
-    normal: Text,
+    h1: H1,
+    h2: H2,
+    h3: H3,
+    normal: P,
     blockquote: Blockquote,
   },
   marks: {

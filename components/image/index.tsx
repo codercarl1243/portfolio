@@ -7,7 +7,7 @@ import logErrorToService from "../Logger";
 import { CiImageOff } from "react-icons/ci";
 
 
-export default function Main(props: TImageProps) {
+export default function MainImage(props: TImageProps) {
     return (
         <ErrorBoundary
             fallback={<FallbackImage width={props.width ?? 800} height={props.height ?? 300} />}

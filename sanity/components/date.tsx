@@ -1,3 +1,4 @@
+'use client';
 import { DateTimeInputProps, useFormValue, set } from 'sanity'
 import { useEffect } from 'react';
 

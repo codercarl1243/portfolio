@@ -1,5 +1,4 @@
-import Image from "next/image";
-import {Link} from "@/components";
+import {Link, ImageComponent} from "@/components";
 
 
 export default function Header() {
@@ -7,8 +6,8 @@ export default function Header() {
     return (
         <header className="w-full">
             <nav className="flex justify-between items-stretch">
-                {/* <Link href="/"> */}
-                    <Image
+                <Link href="/">
+                    <ImageComponent
                         // className="dark:invert"
                         src="/coderCarl_main_transparent.png"
                         alt="Coder Carl logo"
@@ -16,10 +15,10 @@ export default function Header() {
                         height={38}
                         priority
                     />
-                {/* </Link> */}
+                </Link>
                 <div className="grow"/>
                 <ul className="flex justify-between items-center gap-4">
-                    {/* <li>
+                    <li>
                         <Link className={'block h-full border'} href={'/posts'}>Posts</Link>
                     </li>
                     <li>
@@ -27,7 +26,7 @@ export default function Header() {
                     </li>
                     <li>
                         <Link  className={'block h-full border'}  href={'/'}>+_+_TOODO_+_+</Link>
-                    </li> */}
+                    </li>
                 </ul>
             </nav>
         </header>
