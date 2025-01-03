@@ -1,20 +1,6 @@
 import type { Metadata } from "next";
 import "../styling/style.css";
-import { Nunito_Sans, Libre_Baskerville } from 'next/font/google'
-import { SanityLive } from "../studio/live";
 import { Footer, Header } from "@/components";
-
-const sansSerifFont = Nunito_Sans({
-  subsets: ['latin'],
-  variable: "--font-main",
-  weight: ["400", "700"],
-  style: ["normal", "italic"]
-});
-const serifFont = Libre_Baskerville({
-  subsets: ['latin'],
-  variable: "--font-accent",
-  weight: ["400", "700"],
-});
 
 export const metadata: Metadata = {
   title: "Coder Carl's website",
@@ -28,13 +14,12 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="en">
-      <body className={`${sansSerifFont.variable} ${serifFont.variable} antialiased wrapper`}>
-        <Header />
+    <div className="wrapper">
+      <Header />
+      <main>
         {children}
-        <SanityLive />
-        <Footer />
-      </body>
-    </html>
+      </main>
+      <Footer />
+    </div>
   );
 }

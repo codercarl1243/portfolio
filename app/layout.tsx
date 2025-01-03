@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
-import "../styling/style.css";
+import "./styling/style.css";
 import { Nunito_Sans, Libre_Baskerville } from 'next/font/google'
-import { SanityLive } from "../studio/live";
+import { SanityLive } from "./studio/live";
 
 const sansSerifFont = Nunito_Sans({
   subsets: ['latin'],
@@ -15,16 +14,19 @@ const serifFont = Libre_Baskerville({
   weight: ["400", "700"],
 });
 
-export const metadata: Metadata = {
-  title: "Coder Carl's website",
-  description: "Projects and stuff by Coder Carl",
-};
 
-export default function StudioLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
 
-  return children;
+  return (
+    <html lang="en">
+      <body className={`${sansSerifFont.variable} ${serifFont.variable} antialiased`}>
+        {children}
+        <SanityLive />
+      </body>
+    </html>
+  );
 }
