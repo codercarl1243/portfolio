@@ -42,7 +42,7 @@ export const NumberedList = ({ children }: { children: React.ReactNode }) => (
   <ol className="list-decimal pl-5">{children}</ol>
 );
 
-export const Link = (props: React.ComponentProps<typeof CustomLink>) => <CustomLink props={props} />;
+export const Link = (props: TLinkProps) => <CustomLink {...props} />;
 // export const Link = (props) => <CustomLink props={props}>{props.children}</CustomLink>;
 
 

@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import type { NextLinkProps, TLinkProps } from './link.dts';
 import { isPortableTextLink } from "./guards";
+import type { NextLinkProps, TLinkProps } from './link.dts';
 import classNames from 'classnames';
 
 export default function MainLink(props: TLinkProps) {
   
   if (isPortableTextLink(props)) {
-      return <CustomLink children={props.children} className={props.className} href={props.value.href || ""}/>;
+      return <CustomLink children={props.children} href={props.value?.href || ""}/>;
   }
 
   return <CustomLink  children={props.children} className={props.className} href={props.href}  />;
@@ -14,7 +14,7 @@ export default function MainLink(props: TLinkProps) {
 
 function CustomLink({ href = "", children, className }: NextLinkProps) {
 
-  const linkClasses = classNames(className, {
+  const linkClasses = classNames(className, 'font-main text-base', {
       link: !!href,
   });
   
