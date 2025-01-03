@@ -12,7 +12,7 @@ interface PortableSanityImageProps extends PortableTextComponentProps<TSanityIma
 const portableTextComponents = {
   types: {
     image: ({ value }: PortableSanityImageProps) => <ImageComponent value={value} />,
-    code: ({ value }: PortableTextComponentProps<CodeInputValue>) => <Code code={value.code} language={value.language} />,
+    code: ({ value }: PortableTextComponentProps<CodeInputValue>) => <Code code={value.code} language={value.language} filename={value.filename} highlightedLines={value.highlightedLines}/>,
   },
   block: {
     h1: H1,

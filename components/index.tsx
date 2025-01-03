@@ -24,13 +24,13 @@ export const P = ({ children }: React.HTMLAttributes<HTMLParagraphElement>) => <
 
 export const Blockquote = ({ children }: React.BlockquoteHTMLAttributes<HTMLQuoteElement>) => <blockquote className="border-l-4 pl-4 font-main italic">{children}</blockquote>;
 
-export const Bold = ({ children }: { children: React.ReactNode }) => <b className="font-bold">{children}</b>;
+export const Bold = ({ children }: { children: React.ReactNode }) => <span className="font-bold">{children}</span>;
 
-export const Italic = ({ children }: { children: React.ReactNode }) => <i>{children}</i>;
+export const Italic = ({ children }: { children: React.ReactNode }) => <span className="italic">{children}</span>;
 
 export const Underline = ({ children }: { children: React.ReactNode }) => <span className="underline">{children}</span>;
 
-export const Code = ({ language, code }: TCodeProps) => <CodeBlock language={language} code={code} />
+export const Code = ({ language, code, highlightedLines, filename }: TCodeProps) => <CodeBlock language={language} code={code} highlightedLines={highlightedLines} filename={filename}/>
 
 export const ImageComponent = (props: TImageProps) => <Image {...props}/>
 
@@ -42,7 +42,7 @@ export const NumberedList = ({ children }: { children: React.ReactNode }) => (
   <ol className="list-decimal pl-5">{children}</ol>
 );
 
-export const Link = ({ children, value, href }: React.ComponentProps<typeof CustomLink>) => <CustomLink value={value} href={href}>{children}</CustomLink>;
+export const Link = (props: React.ComponentProps<typeof CustomLink>) => <CustomLink props={props} />;
 // export const Link = (props) => <CustomLink props={props}>{props.children}</CustomLink>;
 
 
