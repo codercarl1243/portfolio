@@ -7,10 +7,6 @@ export const CustomImage = defineType({
     type: 'image',
     icon: CiImageOn,
     fields: [
-        // defineField({
-        //     name: 'image',
-        //     type: 'image',
-        // }),
         defineField({
             name: 'alt',
             type: 'string',

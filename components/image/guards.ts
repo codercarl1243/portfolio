@@ -1,5 +1,5 @@
 import { SanityAsset, SanityReference } from "@sanity/image-url/lib/types/types";
-import { SanityImage, TImageProps, TSanityImageProps } from "./image.dts";
+import { SanityImage, TImageProps, TSanityImageProps } from "./image";
 
 export function isSanityImage(props: TImageProps): props is TSanityImageProps {
     return (props

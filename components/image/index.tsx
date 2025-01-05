@@ -1,6 +1,6 @@
 'use client';
 
-import { TImageProps } from "./image.dts";
+import { TImageProps } from "./image";
 import ImageRenderer from './image.renderer';
 import { ErrorBoundary } from "react-error-boundary";
 import logErrorToService from "../Logger";

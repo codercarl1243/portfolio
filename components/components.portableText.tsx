@@ -5,7 +5,7 @@ import type { PortableTextMarkComponentProps, PortableTextMarkComponent } from "
 import { Blockquote, Bold, BulletList, Code, H1, H2, H3, ImageComponent, Italic, Link, P, NumberedList, Underline } from "@/components";
 import type { PortableTextLinkProps } from '@/components/link/link.dts';
 import type { CodeInputValue } from "@sanity/code-input";
-import { TSanityImageProps } from "./image/image.dts";
+import { TSanityImageProps } from "./image/image";
 
 // The PortableTextComponentProps Generic widens the type of 'value' too much
 interface PortableSanityImageProps extends PortableTextComponentProps<TSanityImageProps['value']> {

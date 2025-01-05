@@ -1,6 +1,6 @@
 'use client';
 import Image from '@/components/image';
-import type { TImageProps } from '@/components/image/image.dts';
+import type { TImageProps } from '@/components/image/image';
 
 import CustomLink from '@/components/link';
 import type { TLinkProps } from '@/components/link/link.dts';
