@@ -11,6 +11,7 @@ import React from 'react';
 
 import CustomHeader from './layout/Header'
 import CustomFooter from './layout/Footer'
+import CustomLogo from './logo'
 
 export const H1 = ({ children }: React.HTMLAttributes<HTMLHeadingElement>) => <h1 className="font-accent font-bold text-4xl">{children}</h1>;
 
@@ -51,3 +52,5 @@ export const Link = (props: TLinkProps) => <CustomLink {...props} />;
 export const Header = () => <CustomHeader />
 
 export const Footer = () => <CustomFooter />
+
+export const Logo = () => <CustomLogo />
