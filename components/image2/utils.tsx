@@ -1,6 +1,6 @@
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { type TNextImageProps, type TImageProps, type ImageVariant, imageVariants } from './image.d';
-import classnames from 'classnames';
+import { clsx } from 'clsx';
 import { isSanityImage, isSanityImageObject } from './guards';
 import { getImageDimensionsForPortableTextImage, urlFor } from '@/sanity/lib/image.lib';
 
@@ -17,7 +17,7 @@ export default function ImageUtils(props: TImageProps): TNextImageProps {
 
     const resolvedSrc = getImageSource(src)
 
-    const imageClasses = classnames('image block-image', className);
+    const imageClasses = clsx('image block-image', className);
 
     const { finalWidth, finalHeight } = getImageDimensions(src, options?.variant)
 

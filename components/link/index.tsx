@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { isPortableTextLink } from "./guards";
 import type { NextLinkProps, TLinkProps } from './link.dts';
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 
 export default function MainLink(props: TLinkProps) {
   
@@ -14,7 +14,7 @@ export default function MainLink(props: TLinkProps) {
 
 function CustomLink({ href = "", children, className }: NextLinkProps) {
 
-  const linkClasses = classNames(className, 'font-main text-base', {
+  const linkClasses = clsx(className, 'font-main text-base', {
       link: !!href,
   });
   

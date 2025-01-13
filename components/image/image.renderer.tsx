@@ -4,7 +4,7 @@ import { isSanityImage } from "./guards";
 import { TImageProps, TNextImageProps, TSanityImageProps } from "./image";
 import Image from 'next/image';
 import SanityImage from "./Image.sanity";
-import classnames from 'classnames';
+import { clsx } from 'clsx';
 import { urlFor } from "@/sanity/lib/image.lib";
 
 export default function Main(props: TImageProps) {
@@ -20,7 +20,7 @@ export default function Main(props: TImageProps) {
 
     const { src, alt = "", width = 800, height = 300, className, ...rest } = props as TNextImageProps
 
-    const imageClasses = classnames('image block-image', className);
+    const imageClasses = clsx('image block-image', className);
     return (
         <Image
             {...rest}
