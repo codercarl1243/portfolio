@@ -1,7 +1,7 @@
 import { ComponentType } from "react";
-import { DocumentDefinition, FieldGroupDefinition, InputProps, ObjectDefinition } from "sanity";
+import { DocumentDefinition, FieldGroupDefinition, InputProps, ObjectDefinition, SchemaTypeDefinition, StringDefinition } from "sanity";
 
-export type DocumentObjectDefinitionType = (DocumentDefinition | ObjectDefinition) & {
+export type DocumentObjectDefinitionType = (SchemaTypeDefinition | DocumentDefinition | ObjectDefinition | StringDefinition) & {
     groups?: FieldGroupDefinition[];
     fields: Array<{group?: string | string[] | FieldGroupDefinition}>;
   };
@@ -16,4 +16,6 @@ export type DocumentObjectDefinitionType = (DocumentDefinition | ObjectDefinitio
   export type GroupingPluginConfig = {
     defaultGroupTitle?: string;
     defaultGroupIcon?: ComponentType;
+    schemas?: SchemaTypeDefinition[];
+    allFieldsShown?: boolean;
   } | void;

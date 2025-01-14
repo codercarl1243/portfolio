@@ -1,6 +1,7 @@
 import { FieldGroupDefinition } from 'sanity'
 import { FiFolder } from "react-icons/fi";
 import { DocumentObjectDefinitionType, GroupingPluginConfig } from './types';
+import { isNonEmptyArray } from './helpers';
 
 // original code from https://github.com/sanity-io/sanity/issues/3142 - https://github.com/williamiommi
 
@@ -16,26 +17,27 @@ export const addGeneralGroupToSchemasGroups = (schemaDefinition: DocumentObjectD
   const DEFAULT_GROUP_TITLE = config && 'defaultGroupTitle' in config ? String(config.defaultGroupTitle) : 'General';
   const DEFAULT_GROUP_ICON = config && 'defaultGroupIcon' in config ? config.defaultGroupIcon : FiFolder;
 
+  return _addDefaultGroup(schemaDefinition);
+
+
    /**
    * Adds a default 'general' group to the schema and assigns ungrouped fields to it.
    *
    * @param def - The schema definition being processed.
    * @returns The updated schema definition.
    */
-  const _addDefaultGroup = (definition: DocumentObjectDefinitionType ) => {
-
-    if (!definition.fields || !_isNonEmptyArray(definition.fields)) {
+  function _addDefaultGroup(definition: DocumentObjectDefinitionType ){
+    // if no fields are present, exit early
+    if (!definition.fields || !isNonEmptyArray(definition.fields)) {
       console.warn(`Schema definition ${definition.name ? `for ${definition.name}` : 'NO NAME IN SCHEMA'} has no fields`);
       return definition;
     }
-
+    // Check if your document/object has any groups defined. No groups = nothing done
     definition.groups = definition.groups || [];
-    
-    const hasGroups = _isNonEmptyArray(definition.groups);
+    const hasGroups = isNonEmptyArray(definition.groups);
 
     if (hasGroups) {
-
-      const hasUngroupedFields = definition.fields.some((field) => !field.group || (Array.isArray(field.group) && field.group.length === 0));
+      const hasUngroupedFields = !definition.fields.every((field) => typeof field.group === 'string' ||(Array.isArray(field.group) && field.group.length > 0));
       if (hasUngroupedFields) {
 
         const defaultGroup: FieldGroupDefinition = {
@@ -44,15 +46,11 @@ export const addGeneralGroupToSchemasGroups = (schemaDefinition: DocumentObjectD
           title: DEFAULT_GROUP_TITLE,
         }
 
-        // Check if the first group is 'all-fields' and remove it
-        definition.groups = definition.groups.filter(group => group.name !== "all-fields");
-        
         if (!definition.groups.some(group => group.name === DEFAULT_GROUP_NAME)){
           definition.groups.push(defaultGroup);
         }
 
         definition.fields = definition.fields.map((field) => {          
-
           if (!field.group || (Array.isArray(field.group) && field.group.length === 0)){
             field.group = DEFAULT_GROUP_NAME;
           }
@@ -63,17 +61,4 @@ export const addGeneralGroupToSchemasGroups = (schemaDefinition: DocumentObjectD
     }
     return definition
   }
-
-  /**
-   * Checks if the given value is a non-empty array.
-   *
-   * @param value - The value to check.
-   * @returns `true` if the value is a non-empty array; otherwise, `false`.
-   */
-  function _isNonEmptyArray<T>(value: unknown): value is T[] {
-    return Array.isArray(value) && value.length > 0;
-  }
-
-  schemaDefinition = _addDefaultGroup(schemaDefinition);
-  return schemaDefinition;
 }

@@ -15,18 +15,16 @@ import {structure} from './sanity/structure'
 import {codeInput} from '@sanity/code-input'
 import {GroupingPlugin} from './sanity/plugins/grouping'
 
-
-
 export default defineConfig({
   basePath: '/studio',
   projectId,
   dataset,
-  schema: {types: schemaTypes},
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   plugins: [
     structureTool({structure}),
     visionTool({defaultApiVersion: apiVersion}),
     codeInput(),
-    GroupingPlugin(),
+    // This works provided that schemas are not passed in afterwards
+    GroupingPlugin({schemas: schemaTypes}),
   ],
 })
