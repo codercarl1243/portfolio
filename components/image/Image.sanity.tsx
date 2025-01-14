@@ -1,7 +1,7 @@
 import { getImageDimensionsForPortableTextImage, urlFor } from "@/sanity/lib/image.lib";
 import { isPortableTextImage, isSanityAssetImage } from "./guards";
 import Image from './index'
-import { TSanityImageProps } from "./image.dts";
+import { TSanityImageProps } from "./image";
 
 export default function SanityImage(props: TSanityImageProps) {
     const { value, ...restProps } = props;

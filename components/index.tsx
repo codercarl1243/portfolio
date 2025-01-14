@@ -1,6 +1,6 @@
 'use client';
 import Image from '@/components/image';
-import type { TImageProps } from '@/components/image/image.dts';
+import type { TImageProps } from '@/components/image/image';
 
 import CustomLink from '@/components/link';
 import type { TLinkProps } from '@/components/link/link.dts';
@@ -11,6 +11,7 @@ import React from 'react';
 
 import CustomHeader from './layout/Header'
 import CustomFooter from './layout/Footer'
+import CustomLogo from './logo'
 
 export const H1 = ({ children }: React.HTMLAttributes<HTMLHeadingElement>) => <h1 className="font-accent font-bold text-4xl">{children}</h1>;
 
@@ -42,7 +43,7 @@ export const NumberedList = ({ children }: { children: React.ReactNode }) => (
   <ol className="list-decimal pl-5">{children}</ol>
 );
 
-export const Link = (props: React.ComponentProps<typeof CustomLink>) => <CustomLink props={props} />;
+export const Link = (props: TLinkProps) => <CustomLink {...props} />;
 // export const Link = (props) => <CustomLink props={props}>{props.children}</CustomLink>;
 
 
@@ -51,3 +52,5 @@ export const Link = (props: React.ComponentProps<typeof CustomLink>) => <CustomL
 export const Header = () => <CustomHeader />
 
 export const Footer = () => <CustomFooter />
+
+export const Logo = () => <CustomLogo />

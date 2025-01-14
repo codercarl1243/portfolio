@@ -1,5 +1,4 @@
-import {Link, ImageComponent} from "@/components";
-
+import {Link, Logo} from "@/components";
 
 export default function Header() {
 
@@ -7,14 +6,7 @@ export default function Header() {
         <header className="w-full">
             <nav className="flex justify-between items-stretch">
                 <Link href="/">
-                    <ImageComponent
-                        // className="dark:invert"
-                        src="/coderCarl_main_transparent.png"
-                        alt="Coder Carl logo"
-                        width={90}
-                        height={38}
-                        priority
-                    />
+                    <Logo />
                 </Link>
                 <div className="grow"/>
                 <ul className="flex justify-between items-center gap-4">

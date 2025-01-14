@@ -14,7 +14,7 @@ export const urlFor = (source: SanityImageSource) => {
 
 export function getImageDimensionsForPortableTextImage(
   image: SanityImageObject,
-): { width: number; height: number; aspectRatio: number } {
+): { width: number; height: number; } {
 
   if (!image?.asset?._ref) {
     throw new Error('Unsupported PortableText image: Missing _ref');
@@ -39,13 +39,11 @@ export function getImageDimensionsForPortableTextImage(
     return {
       width: croppedWidth,
       height: croppedHeight,
-      aspectRatio: croppedWidth / croppedHeight,
     }
   }
 
   return {
     width: finalWidth,
     height: finalHeight,
-    aspectRatio: finalWidth / finalHeight,
   }
 }
